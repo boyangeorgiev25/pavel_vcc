@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VCC Pipeline CRM</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <div class="brand">
+          <span class="brand-mark">VCC</span>
+          <div>
+            <strong>Pipeline CRM</strong>
+            <p>Internal investment operating system</p>
+          </div>
+        </div>
+
+        <nav class="nav-list">
+          <a href="#dashboard" data-nav="dashboard">Dashboard</a>
+          <a href="#pipeline" data-nav="pipeline">Pipeline</a>
+          <a href="#intake" data-nav="intake">Intake</a>
+          <a href="#relationships" data-nav="relationships">Relationships</a>
+          <a href="#organizations" data-nav="organizations">Organizations</a>
+          <a href="#pipeline-records" data-nav="pipeline-records">Pipeline OS</a>
+          <a href="#tasks" data-nav="tasks">Tasks</a>
+          <a href="#companies" data-nav="companies">Companies</a>
+          <a href="#reports" data-nav="reports">Reports</a>
+          <a href="#settings" data-nav="settings">Settings</a>
+        </nav>
+
+        <div class="sidebar-footer">
+          <span class="eyebrow">Operating rhythm</span>
+          <p>Friday review should clear decision-ready deals, stale opportunities, and missing-input blockers.</p>
+        </div>
+      </aside>
+
+      <main class="workspace">
+        <header class="topbar">
+          <div>
+            <span class="eyebrow" id="pageEyebrow">Internal CRM</span>
+            <h1 id="pageTitle">Dashboard</h1>
+          </div>
+          <div class="topbar-actions">
+            <label class="inline-field">
+              <span>User</span>
+              <select id="currentUserSelect"></select>
+            </label>
+            <button class="button button-secondary" id="refreshAppButton">Refresh</button>
+            <button class="button button-primary" id="globalAddOpportunityButton">Add Opportunity</button>
+          </div>
+        </header>
+
+        <section id="bannerHost"></section>
+        <section id="app"></section>
+      </main>
+    </div>
+
+    <div id="toastHost" class="toast-host"></div>
+    <div id="modalHost"></div>
+    <script src="/app.js" defer></script>
+  </body>
+  </html>

@@ -1,0 +1,13 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+	bare = false
+	logallrefupdates = true
+	ignorecase = true
+	precomposeunicode = true
+[remote "fo-diligence-codex"]
+	url = https://github.com/pavkata1926/fo-diligence-codex.git
+	fetch = +refs/heads/*:refs/remotes/fo-diligence-codex/*
+[branch "main"]
+	remote = fo-diligence-codex
+	merge = refs/heads/main
