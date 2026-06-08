@@ -9,8 +9,11 @@ from typing import Dict, Iterable, List, Optional
 from urllib.error import URLError
 from urllib.request import Request, urlopen
 
-from openpyxl import load_workbook
-from pypdf import PdfReader
+# NOTE: ``openpyxl`` and ``pypdf`` are imported lazily inside the functions that
+# need them (see ``_read_pdf`` / ``_read_spreadsheet``). Importing them at module
+# load time means a missing or broken optional dependency (for example a broken
+# ``cryptography`` backend that ``pypdf`` pulls in) would crash the whole server
+# on startup, even though document parsing is a best-effort, optional feature.
 
 
 class _HTMLTextParser(HTMLParser):
@@ -130,6 +133,8 @@ def _read_website(url: str) -> Dict[str, str]:
 
 
 def _read_pdf(path: Path) -> str:
+    from pypdf import PdfReader
+
     reader = PdfReader(str(path))
     text_parts = []
     for page in reader.pages[:12]:
@@ -138,6 +143,8 @@ def _read_pdf(path: Path) -> str:
 
 
 def _read_spreadsheet(path: Path) -> str:
+    from openpyxl import load_workbook
+
     workbook = load_workbook(filename=str(path), read_only=True, data_only=True)
     lines: List[str] = []
     for sheet_name in workbook.sheetnames[:4]:
